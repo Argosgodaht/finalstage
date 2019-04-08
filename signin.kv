@@ -1,0 +1,3095 @@
+WindowManager:
+	SigninWindow:
+	Signup:
+	MainWindow:
+	Prof_page:
+	PY_Lang:
+	C_Lang:
+	jv_lang:
+	RasB_Lang: 
+	jv_info:
+	jv_info1:
+	py_info:
+	py_info1:
+	py_first:
+	py_fnx1:
+	py_fnx2:
+	py_finfo:
+	py_sec:
+	py_snx1:
+	py_snx2:
+	py_sinfo:
+	py_third:
+	py_tnx1:
+	py_tnx2:
+	py_tinfo:
+	py_four:
+	py_fonx1:
+	py_fonx2:
+	py_foinfo:
+	jv_first:
+	jv_fnx1:
+	jv_fnx2:
+	jv_finfo:
+	jv_sec:
+	jv_snx1:
+	jv_snx2:
+	jv_sinfo:
+	jv_third:
+	jv_tnx1:
+	jv_tnx2:
+	jv_tinfo:
+	jv_four:
+	jv_fonx1:
+	jv_fonx2:
+	jv_foinfo:
+	
+	
+<Button>:
+	
+	font_size: 20
+	
+<Label>:
+	font_name: 'boogaloo.otf'
+	font_size: 20
+	color: 0,0,0,1
+
+<SigninWindow>:
+	
+	id: main_win
+	name: "main_win"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	email:email
+	pwd:pwd
+	info:info
+	
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"yel.jpg"
+	 
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "LOGIN SCREEN"
+			bold: True
+			size_hint_x: 0.9
+		
+	
+	Label:
+		id: info
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: main_win.space_x,10 
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			spacing: 10
+			padding: 0,0,0,12
+			height: 40
+			Label:
+				id: username_field
+				text: "Email ID: "
+			TextInput:
+				id: email
+				multiline: False
+				focus: True
+				on_text_validate: pwd.focus= True
+		BoxLayout:
+		
+			orientation: "horizontal"
+			size_hint_y: None
+			spacing: 10
+			padding: 0,0,0,12
+			height: 40
+			Label:
+				id: pwd_field1
+				text: "Password: "
+			TextInput:
+				id: pwd
+				multiline: False
+				password: True
+				focus: True
+				on_text_validate:root.loginBtn()
+
+		Label:
+			id: sp1
+			size_hint_y: None
+			height: 40
+		Button:
+			size_hint_y: None
+			height: 40
+			background_color:(1,2,3,0.4)
+			text: "Sign in"
+			on_release:
+				root.loginBtn()
+				
+			
+		Button:
+			size_hint_y: None
+			height: 40
+			background_color:(1,2,3,0.4)
+			text: "Make a new account"
+			on_release:
+				root.info.text = ""
+				app.root.current = "second" 
+				root.manager.transition.direction= "left"
+		Label:
+			id: sp2
+
+<Signup>:
+	name: "second"
+	id: reg_win
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/4
+	name1:name1
+	year:year
+	contact:contact
+	email:email
+	branch:branch
+	pwd:pwd
+	pwd1:pwd1
+	s_name:s_name
+	passw:passw
+	passw1:passw1
+	mail:mail
+	con:con
+	
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"yel2.jpg"
+	 
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "SIGN UP"
+			bold: True
+
+	
+	Label:
+		id: info
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		
+		orientation: "vertical"
+		padding: reg_win.space_x,10 
+		BoxLayout:
+			spacing: 10
+			padding: 0,0,0,12
+			orientation: "horizontal"
+			size_hint_y: None
+			height: 40
+			Label:
+				text: "Name:* "
+			TextInput:				
+				id: name1
+				multiline: False
+				focus: True
+				on_text_validate: branch.focus= True
+			Label:
+				id: s_name
+				markup: True
+				text: "(Enter Full Name)"
+				
+		BoxLayout:
+			orientation: "horizontal"
+			padding: 0,0,0,12
+			spacing: 10
+			size_hint_y: None
+			height: 40
+			Label:
+				text: "Branch: "
+			TextInput:
+				id: branch	
+				multiline: False
+				focus: True
+				on_text_validate: year.focus= True
+			Label:
+				text: ""
+		BoxLayout:
+			padding: 0,0,0,12
+			spacing: 10
+			orientation: "horizontal"
+			size_hint_y: None
+			height: 40
+			Label:
+				text: "Year: "
+			TextInput:
+				id: year
+				multiline: False
+				focus: True
+				on_text_validate: pwd.focus= True
+			Label:
+				text: ""
+				
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			height: 40
+			padding: 0,0,0,12
+			Label:
+				text: "Password:* "
+			TextInput:
+				id: pwd
+				multiline: False
+				focus: True
+				on_text_validate: pwd1.focus= True
+			Label:
+				id: passw
+				markup: True
+				text: "(min 6 char)"
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			padding: 0,0,0,12
+			height: 40
+			Label:
+				text: "Confirm Password:* "
+			TextInput:
+				id: pwd1
+				multiline: False
+				focus: True
+				on_text_validate: email.focus= True
+			Label:
+				id: passw1
+				markup: True
+				text: ""
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			height: 40
+			padding: 0,0,0,12
+			Label:
+				text: "Email id:* "
+			TextInput:
+				id: email
+				multiline: False
+				focus: True
+				on_text_validate: contact.focus= True
+			Label:
+				id: mail
+				markup: True
+				text: "abc@def.com"
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			padding: 0,0,0,12
+			height: 40
+			Label:
+				text: "Contact no.: "
+			TextInput:
+				id: contact
+				multiline: False
+				focus: True
+				on_text_validate: root.submit()
+			Label:
+				id: con
+				markup: True
+				text: ""
+		Label:
+			text: ""
+			height: 50
+			size_hint_y: None
+		
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			padding: 0,0,0,12
+			height: 40
+			Label:
+				text: ""
+				size_hint_x: 0.2
+			Button:
+				id: reg
+				size_hint_y: None
+				size_hint_x: 0.5
+				height: 40
+				text: "Reset"
+				background_color:(1,2,3,0.4)
+				on_release:
+					root.re()
+			Label:
+				text: ""
+				size_hint_x: 0.2
+				
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			padding: 0,0,0,12
+			height: 40
+			Label:
+				text: ""
+				size_hint_x: 0.2
+			Button:
+				id: reg
+				size_hint_y: None
+				size_hint_x: 0.5
+				height: 40
+				text: "Register"
+				background_color:(1,2,3,0.4)
+				on_release:
+					root.submit()
+			Label:
+				text: ""
+				size_hint_x: 0.2
+		BoxLayout:
+			orientation: "horizontal"
+			size_hint_y: None
+			padding: 0,0,0,12
+			height: 40
+			Label:
+				text: ""
+				size_hint_x: 0.2
+				
+			Button:
+				text: "Already have an Account?"
+				size_hint_y: None
+				size_hint_x: 0.5
+				height: 40
+				background_color:(1,2,3,0.4)
+				on_release:
+					app.root.current = "main_win" 
+					root.manager.transition.direction= "right"
+			Label:
+				text: ""
+				size_hint_x: 0.2	
+		
+		Label:
+			id: sp2
+			
+<MainWindow>:
+	id: main
+	name: "main"
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"mac.jpg"
+			
+	orientation: "vertical"
+
+	BoxLayout:
+		height: 30
+		size_hint_y: None
+		Label:
+			text: ""
+			size_hint_x: 0.9
+			
+	
+	BoxLayout:		
+		size_hint_x: 0.28
+		orientation: "horizontal"
+		BoxLayout:
+			orientation:"vertical"
+			Button:
+				size_hint_y: None
+				background_color:(1,2,3,0.4)
+				height: 40
+				text: "My Profile"
+				on_release:
+					app.root.current = "prof" 
+					root.manager.transition.direction= "right"
+			Button:
+				size_hint_y: None
+				background_color:(1,2,3,0.4)
+				height: 40
+				text: "Python"
+				on_release:
+					app.root.current= "py"
+					root.manager.transition.direction= "right"
+				
+			Button:
+				size_hint_y: None
+				background_color:(1,2,3,0.4)
+				height: 40
+				text: "C++"
+				on_release:
+					app.root.current= "clang"
+					root.manager.transition.direction= "right"
+					
+			Button:
+				size_hint_y: None
+				height: 40
+				background_color:(1,2,3,0.4)
+				text: "Java"
+				on_release:
+					app.root.current= "jv"
+					root.manager.transition.direction= "right"
+				
+			Button:
+				size_hint_y: None
+				height: 40
+				text: "Rasberry Pi"
+				background_color:(1,2,3,0.4)
+				on_release:
+					app.root.current= "ras"
+					root.manager.transition.direction= "right"
+
+			Button:
+				size_hint_y: None
+				height: 40
+				background_color:(1,2,3,0.4)
+				text: "Discussion Forum"
+			Button:
+				size_hint_y: None
+				height: 40
+				background_color:(1,2,3,0.4)
+				text: "Log Out"
+				on_release:
+					app.root.current = "main_win" 
+					root.manager.transition.direction= "right"
+			Label:
+				text: ""
+				size_hint_Y: 60
+		
+		
+<Prof_page>:
+	id: prof
+	name: "prof"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "My Profile"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: prof.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Name: "
+			Label:
+				id: prof_name
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Branch: "
+			Label:
+				id: prof_branch
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Email ID: "
+			Label:
+				id: prof_mail
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Mobile number: "
+			Label:
+				id: prof_contact
+				text: ''
+		
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "main"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp4
+		
+		Label:
+			text: "Email Id: pandora@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 9004984430" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp5
+			height: 40
+			size_hint_y: None 
+			
+			
+<PY_Lang>:
+	id: py
+	name: "py"
+	space_x: self.size[0]/3
+	
+	canvas.before:
+		Rectangle:	
+			pos: self.pos
+			size: self.size
+			source:"blu.jpg"
+	BoxLayout: 
+		orientation: 'vertical'
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			Button:
+				text: "BACK"
+				height: 30
+				size_hint_y: None
+				size_hint_x: 0.1
+				background_color: (1,2,3,0.4)
+				on_release:
+					app.root.current="main"
+					root.manager.transition.direction="up"
+			Label: 
+				font_size: 40
+				text: 'Python'
+				size_hint_y: None
+				background_color: (1,2,3,0.4)
+			Label:
+				text: ''
+				size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			padding: py.space_x,10
+			
+			Label:
+				size_hint_y: None
+				height: 50
+				text: "To know more on Python, Click here!!"
+			Button:
+				size_hint_y: None
+				height: 50
+				text: "Learn Python"
+				background_color: (1,2,3,0.4)
+				on_release:
+					app.root.current= "py_info"
+					root.manager.transition.direction= "right"
+			Label:
+				height: 10
+				
+		BoxLayout:
+			spacing: 20
+			padding: py.space_x,10
+			orientation: 'horizontal'
+			BoxLayout:
+				spacing: 10
+				size_hint_y: None
+				size_hint_x: 0.4
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"secret.jpg"
+				Label:
+					text: ''
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Secret Message'
+					on_release:
+						app.root.current= "py_first"
+						root.manager.transition.direction= "right"
+			BoxLayout:
+				spacing: 10
+				size_hint_y: None
+				size_hint_x: 0.4
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"space.jpg"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Where is the space station'
+					on_release:
+						app.root.current= "py_sec"
+						root.manager.transition.direction= "right"
+		Label:
+			text: ''
+			size_hint_y: None
+			height: 20
+			id: sp7		
+
+		BoxLayout:
+			spacing: 20
+			padding: py.space_x,10
+			orientation: 'horizontal'
+			BoxLayout:
+				spacing: 20
+				size_hint_x: 0.4
+				size_hint_y: None
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"robo.jpg"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Robot Trumps'
+					on_release:
+						app.root.current= "py_third"
+						root.manager.transition.direction= "right"
+			BoxLayout:
+				spacing: 20
+				size_hint_x: 0.4
+				size_hint_y: None
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"pie.png"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Popular Pets'
+					on_release:
+						app.root.current= "py_four"
+						root.manager.transition.direction= "right"
+					
+		Label:
+			id: sp4
+			size_hint_y: None
+			height: 50
+			
+						
+<C_Lang>:
+	id: clang
+	name: "clang"
+	space_x: self.size[0]/3
+	
+	canvas.before:
+		Rectangle:	
+			pos: self.pos
+			size: self.size
+			source:"blu.jpg"
+	BoxLayout: 
+		orientation: 'vertical'
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			Button:
+				text: "BACK"
+				height: 30
+				size_hint_y: None
+				size_hint_x: 0.1
+				background_color: (1,2,3,0.4)
+				on_release:
+					app.root.current="main"
+					root.manager.transition.direction="up"
+			Label: 
+				font_size: 40
+				text: 'Java'
+				size_hint_y: None
+				background_color: (1,2,3,0.4)
+			Label:
+				text: ''
+				size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			padding: clang.space_x,10
+			
+			Label:
+				size_hint_y: None
+				height: 50
+				text: "To know more on Java, Click here!!"
+			
+			Button:
+				size_hint_y: None
+				height: 50
+				text: "Learn Java"
+				background_color: (1,2,3,0.4)
+			Label:
+				height: 10
+				
+		BoxLayout:
+			spacing: 20
+			padding: clang.space_x,10
+			
+			orientation: 'horizontal'
+			BoxLayout:
+				spacing: 20
+				size_hint_y: None
+				size_hint_x: 0.4
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"quiz.png"
+				Label:
+					text: ''
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Online quiz Project'
+					on_release:
+						app.root.current= "jv_info"
+						root.manager.transition.direction= "right"
+			
+			BoxLayout:
+				spacing: 20
+				size_hint_y: None
+				size_hint_x: 0.4
+				
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"lib.jpg"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Library management system'
+		Label:
+			text: ''
+			size_hint_y: None
+			height: 20
+			id: sp7
+		BoxLayout:
+			spacing: 20
+			padding: clang.space_x,10
+			orientation: 'horizontal'
+			BoxLayout:
+				spacing: 20
+				size_hint_x: 0.4
+				size_hint_y: None
+				
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"exam.jpg"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Exam System'
+			BoxLayout:
+				spacing: 20
+				size_hint_x: 0.4
+				size_hint_y: None
+				
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source: "nun.jpg"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Fee Management'
+					
+		Label:
+			id: sp4
+			size_hint_y: None
+			height: 50
+		
+
+<jv_lang>:
+	id: jv
+	name: "jv"
+	space_x: self.size[0]/3
+	
+	canvas.before:
+		Rectangle:	
+			pos: self.pos
+			size: self.size
+			source:"blu.jpg"
+	BoxLayout: 
+		orientation: 'vertical'
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			Button:
+				text: "BACK"
+				height: 30
+				size_hint_y: None
+				size_hint_x: 0.1
+				background_color: (1,2,3,0.4)
+				on_release:
+					app.root.current="main"
+					root.manager.transition.direction="up"
+			Label: 
+				font_size: 40
+				text: 'Java'
+				size_hint_y: None
+				background_color: (1,2,3,0.4)
+			Label:
+				text: ''
+				size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			padding: jv.space_x,10
+			
+			Label:
+				size_hint_y: None
+				height: 50
+				text: "To know more on Java, Click here!!"
+			Button:
+				size_hint_y: None
+				height: 50
+				text: "Learn Java"
+				background_color: (1,2,3,0.4)
+				on_release:
+					app.root.current= "jv_info"
+					root.manager.transition.direction= "right"
+			Label:
+				height: 10
+				
+		BoxLayout:
+			spacing: 20
+			padding: jv.space_x,10
+			orientation: 'horizontal'
+			BoxLayout:
+				spacing: 10
+				size_hint_y: None
+				size_hint_x: 0.4
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"quiz.png"
+				Label:
+					text: ''
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Online Quiz '
+					on_release:
+						app.root.current= "jv_first"
+						root.manager.transition.direction= "right"
+			BoxLayout:
+				spacing: 10
+				size_hint_y: None
+				size_hint_x: 0.4
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"lib.jpg"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Library management'
+					on_release:
+						app.root.current= "jv_sec"
+						root.manager.transition.direction= "right"
+		Label:
+			text: ''
+			size_hint_y: None
+			height: 20
+			id: sp7		
+
+		BoxLayout:
+			spacing: 20
+			padding: jv.space_x,10
+			orientation: 'horizontal'
+			BoxLayout:
+				spacing: 20
+				size_hint_x: 0.4
+				size_hint_y: None
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"trans.jpg"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Transport Management'
+					on_release:
+						app.root.current= "jv_third"
+						root.manager.transition.direction= "right"
+			BoxLayout:
+				spacing: 20
+				size_hint_x: 0.4
+				size_hint_y: None
+				height: 200
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"fee.png"		
+				Button:
+					size_hint_y: None
+					height: 10
+					text: 'Fee Management'
+					on_release:
+						app.root.current= "jv_four"
+						root.manager.transition.direction= "right"
+					
+		Label:
+			id: sp4
+			size_hint_y: None
+			height: 50
+					
+<RasB_Lang>:
+	id: ras
+	name: "ras"
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"bluelog.jpg"
+	BoxLayout:
+		orientation:'horizontal'
+		BoxLayout:
+			orientation: 'vertical'
+			size_hint_x: 0.3
+			Button:
+				text: "a"
+			Button:
+				text: "b"
+			Button:
+				text: "c"
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				orientation: 'horizontal'
+				Label:
+					text: 'first'
+				Label:
+					text: 'second'
+			BoxLayout:
+				orientation: 'horizontal'
+				Label:
+					text: 'third'
+				Label:
+					text: 'fourth'
+		BoxLayout:
+			size_hint_x: 0.3
+			orientation: 'vertical'
+			Label:
+				text: "To know more on Rasberry, Click here!!"
+			Button:
+				text: "Learn Rasberry"
+<jv_info>: 
+	id: jv_info
+	name: "jv_info"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label: 
+			text: ''
+			size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"javainfo.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			orientation: 'horizontal'
+			Button:
+				size_hint_y: None
+				
+				text: 'Back'
+				height: 40
+				on_release:
+					app.root.current= "jv"
+					root.manager.transition.direction = "right"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_info1"
+					root.manager.transition.direction = "right"
+<jv_info1>: 
+	id: jv_info1
+	name: "jv_info1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label: 
+			text: ''
+			size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"javainfo1.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				
+				text: 'Back'
+				height: 40
+				on_release:
+					app.root.current= "jv"
+					root.manager.transition.direction = "right"
+				
+				
+<py_info>: 
+	id: py_info
+	name: "py_info"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label: 
+			text: ''
+			size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"pyinfo.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				
+				text: 'Back'
+				height: 40
+				on_release:
+					app.root.current= "py"
+					root.manager.transition.direction = "up"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_info1"
+					root.manager.transition.direction = "right"
+				
+<py_info1>: 
+	id: py_info1
+	name: "py_info1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label: 
+			text: ''
+			size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"pyinfo1.png"
+	
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: 'Back'
+				height: 40
+				on_release:
+					app.root.current= "py"
+					root.manager.transition.direction= "up"
+				
+<py_first>:
+	id: py_first
+	name: "py_first"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py"
+					root.manager.transition.direction = "right"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_fnx1"
+					root.manager.transition.direction = "right"
+<py_fnx1>:
+	id: py_fnx1
+	name: "py_fnx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fnx1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fnx2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_first"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_fnx2"
+					root.manager.transition.direction = "right"
+<py_fnx2>:
+	id: py_fnx2
+	name: "py_fnx2"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fnx3.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fnx4.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_fnx1"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_finfo"
+					root.manager.transition.direction = "right"
+<py_finfo>:
+	id: py_finfo
+	name: "py_finfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: py_finfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Rishi Patil\n2.Suraj Sharma\n3. Virat Deshmukh'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2016'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: 'Secret Message'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '4/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Nitin Chavan'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "py"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: rishipatil149@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 944445532" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+<py_sec>:
+	id: py_sec
+	name: "py_sec"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label: 
+			text: ''
+			size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py3.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py4.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py5.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py"
+					root.manager.transition.direction = "right"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_snx1"
+					root.manager.transition.direction = "right"
+<py_snx1>:
+	id: py_snx1
+	name: "py_snx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_snx1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_snx2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_sec"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_snx2"
+					root.manager.transition.direction = "right"
+<py_snx2>:
+	id: py_snx2
+	name: "py_snx2"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_snx3.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_snx4.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_snx1"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_sinfo"
+					root.manager.transition.direction = "right"
+<py_sinfo>:
+	id: py_sinfo
+	name: "py_sinfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: py_sinfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Deepti Sonawane\n2.Aniket Vajire\n3. Siddhi Gosavi'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2015'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: "Where's the space station"
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '4.2/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Akash Jadhav'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "py"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: dep0719@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 990420032" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+<py_third>:
+	id: py_third
+	name: "py_third"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label: 
+			text: ''
+			size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py6.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py7.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py"
+					root.manager.transition.direction = "right"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_tnx1"
+					root.manager.transition.direction = "right"
+<py_tnx1>:
+	id: py_tnx1
+	name: "py_tnx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_tnx1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_tnx2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_third"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_tnx2"
+					root.manager.transition.direction = "right"
+<py_tnx2>:
+	id: py_tnx2
+	name: "py_tnx2"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_tnx3.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_tnx4.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_tnx1"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_tinfo"
+					root.manager.transition.direction = "right"
+<py_tinfo>:
+	id: py_tinfo
+	name: "py_tinfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: py_tinfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Navika Wani\n2. Shivani Vyas\n3. Isha Nashikar'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2010'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: 'Robo Trump'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '4.4/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Mohan Mali'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "py"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: Shivani_vy@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 959437345" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+				
+<py_four>:
+	id: py_four
+	name: "py_four"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label: 
+			text: ''
+			size_hint_x: 0.1
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py8.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py9.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_fonx1"
+					root.manager.transition.direction = "right"
+<py_fonx1>:
+	id: py_fonx1
+	name: "py_fonx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fny1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fny2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_four"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_fonx2"
+					root.manager.transition.direction = "right"
+<py_fonx2>:
+	id: py_fonx2
+	name: "py_fonx2"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fny3.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"py_fny4.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "py_fonx1"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "py_foinfo"
+					root.manager.transition.direction = "right"
+<py_foinfo>:
+	id: py_foinfo
+	name: "py_foinfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: py_foinfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Veer Malhotra\n2. Kiara Dsouza\n3. Spandhan Bhagat'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2018'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: 'Popular Pets'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '3.5/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Vijay Patil'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "py"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: dep0719@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 990420032" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+<jv_first>:
+	id: jv_first
+	name: "jv_first"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"quiz1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"quiz2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv"
+					root.manager.transition.direction = "up"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_fnx1"
+					root.manager.transition.direction = "right"
+<jv_fnx1>:
+	id: jv_fnx1
+	name: "jv_fnx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"jv1.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv_first"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_finfo"
+					root.manager.transition.direction = "right"
+
+<jv_finfo>:
+	id: jv_finfo
+	name: "jv_finfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: jv_finfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Veer Malhotra\n2. Kiara Dsouza\n3. Spandhan Bhagat'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2018'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: 'Popular Pets'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '3.5/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Vijay Patil'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "jv"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: dep0719@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 990420032" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+
+
+<jv_sec>:
+	id: jv_sec
+	name: "jv_sec"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"lib1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"lib2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_snx1"
+					root.manager.transition.direction = "right"
+<jv_snx1>:
+	id: jv_snx1
+	name: "jv_snx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"jv2.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv_sec"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_sinfo"
+					root.manager.transition.direction = "right"
+
+<jv_sinfo>:
+	id: jv_sinfo
+	name: "jv_sinfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: jv_sinfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Veer Malhotra\n2. Kiara Dsouza\n3. Spandhan Bhagat'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2018'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: 'Popular Pets'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '3.5/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Vijay Patil'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "jv"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: dep0719@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 990420032" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+			
+<jv_third>:
+	id: jv_third
+	name: "jv_third"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"transport1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"transport2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_tnx1"
+					root.manager.transition.direction = "right"
+<jv_tnx1>:
+	id: jv_tnx1
+	name: "jv_tnx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"jv3.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv_third"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_tinfo"
+					root.manager.transition.direction = "right"
+
+<jv_tinfo>:
+	id: jv_tinfo
+	name: "jv_tinfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: jv_tinfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Veer Malhotra\n2. Kiara Dsouza\n3. Spandhan Bhagat'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2018'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: 'Popular Pets'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '3.5/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Vijay Patil'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "jv"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: dep0719@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 990420032" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+
+<jv_four>:
+	id: jv_four
+	name: "jv_four"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"fee1.png"
+			BoxLayout:
+				orientation: 'vertical'
+				size_hint_x: 0.8
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"fee2.png"
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_fonx1"
+					root.manager.transition.direction = "right"
+<jv_fonx1>:
+	id: jv_fonx1
+	name: "jv_fonx1"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"jv4.1.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv_four"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_fonx2"
+					root.manager.transition.direction = "right"
+<jv_fonx2>:
+	id: jv_fonx2
+	name: "jv_fonx2"
+	BoxLayout:
+		orientation: 'horizontal'
+		canvas.before:
+			Color:
+				rgba:(1,1,1,1)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		BoxLayout:
+			orientation: 'vertical'
+			BoxLayout:
+				size_hint_x: 0.8
+				orientation: 'vertical'
+				canvas.before:
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source:"jv4.2.png"
+			
+		BoxLayout:
+			size_hint_x: 0.1
+			Button:
+				size_hint_y: None
+				text: "Back"
+				height: 40
+				on_release:
+					app.root.current= "jv_fonx1"
+					root.manager.transition.direction = "left"
+			Button:
+				size_hint_y: None
+				
+				text: 'Next'
+				height: 40
+				on_release:
+					app.root.current= "jv_foinfo"
+					root.manager.transition.direction = "right"
+<jv_foinfo>:
+	id: jv_foinfo
+	name: "jv_foinfo"
+	orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source:"my.jpg"
+			
+	BoxLayout:
+		size_hint_y: None
+		height: 50
+		canvas.before:
+			Color:
+				rgba:(1,2,3,0.4)
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			text: "Creator info"
+			bold: True
+			size_hint_x: 0.9
+
+	Label:
+		text: ''
+		markup: True
+		size_hint_y: None
+		height: 20
+		
+	BoxLayout:
+		orientation: "vertical"
+		padding: jv_foinfo.space_x,10 
+		
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label: 
+				text: "Group members: "
+			Label:
+				text: '\n1. Veer Malhotra\n2. Kiara Dsouza\n3. Spandhan Bhagat'
+		BoxLayout:
+			size_hint_y: None
+			orientation: 'horizontal'
+			height: 40
+			Label:
+				text: ''
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Year: "
+			Label:
+				text: '2018'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project Name: "
+			Label:
+				text: 'Popular Pets'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project rating: "
+			Label:
+				text: '3.5/5'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project mentor: "
+			Label:
+				text: 'Vijay Patil'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: 40
+			Label: 
+				text: "Project reviews: "
+			Label:
+				text: ''
+		Button:
+			text: "GO BACK"
+			size_hint_y: None
+			background_color: (1,2,3,0.4)
+			on_release:
+				app.root.current= "jv"
+				root.manager.transition.direction= "up"
+		Label:
+			text: ''
+			id: sp7
+		
+		Label:
+			text: "Email Id: dep0719@gmail.com"
+			size_hint_y: None
+			height: 40
+		Label:
+			text: "Contact for help: 990420032" 
+			size_hint_y: None
+			height: 40
+		Label:
+			text: ''
+			id: sp8
+			height: 40
+			size_hint_y: None 
+	
+	
+		
